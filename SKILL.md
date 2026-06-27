@@ -2,7 +2,6 @@
 name: deep-trace
 description: "Agent Root Cause Analysis Protocol — A systematic five-question methodology adapted from Toyota's 5 Whys for diagnosing failures in AI agent systems. Covers trigger scenarios, the five-question framework, error signature classification, action decomposition, rule design meta-principles, and self-reflection."
 user-invocable: true
-allowed-tools: Bash(multica *)
 ---
 
 # deep-trace: Agent Root Cause Analysis Protocol (五问审查)
