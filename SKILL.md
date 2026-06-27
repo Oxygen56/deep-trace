@@ -230,7 +230,7 @@ statement still holds, it is a principle. If it collapses, it is a patch.
 Before accepting a Q5 answer, execute these verification steps:
 
 1. **Replace all proper nouns** in the principle with placeholders
-   (e.g., "Dispatcher" → "[a routing agent]", "OXY-628" → "[a task]",
+   (e.g., "Dispatcher" → "[a routing agent]", "MUL-123" → "[a task]",
    "multica" → "[the platform]").
 2. **Re-read the substituted statement.** Does it still express a coherent,
    universally applicable rule?
@@ -260,7 +260,7 @@ before routing.
 
 **Example (fails the test)**:
 ```
-Original: "Dispatcher should always check OXY-xxx format before posting."
+Original: "Dispatcher should always check [issue] format before posting."
 
 Substituted: "[Dispatcher] should always check [specific format] before posting."
 
@@ -461,7 +461,7 @@ declared the required capability."
 
 **Negative example** (instance patches):
 ```
-Add to dispatcher instructions: "Check OXY-xxx capability before routing."
+Add to dispatcher instructions: "Check [task] capability before routing."
 Add to manager instructions: "Verify team can handle tasks before assigning."
 Add to autopilot instructions: "Don't route to squad without checking skills."
 → Three rules, same intent, inconsistent wording, two will eventually drift.
@@ -614,7 +614,7 @@ system and they couldn't find the exact line to edit — it's too vague.
 
 | | Incorrect ❌ | Correct ✅ |
 |---|-------------|-----------|
-| **Q5 output** | "Dispatcher should always check OXY-xxx format before posting." | "When a rule is expressed as a template or example within a system's instructions, the system treats it as specific to that template scenario, not as a universal behavior. Universal rules must be declared independently of any template." |
+| **Q5 output** | "Dispatcher should always check [issue] format before posting." | "When a rule is expressed as a template or example within a system's instructions, the system treats it as specific to that template scenario, not as a universal behavior. Universal rules must be declared independently of any template." |
 | **Substitution test** | "[Dispatcher] should always check [specific format] before posting." → Does **not** hold as a universal. | "When [a rule] is expressed as [a template] within [instructions], [the system] treats it as [template-scoped]. [Universal rules] must be declared independently." → **Holds**. |
 | **Why it matters** | The incorrect version is a patch: it fixes one format in one agent. The correct version is a principle: it prevents the entire class of "template-bound rules that don't generalize" — which applies to every agent, every template, every platform. | |
 
@@ -651,7 +651,7 @@ incident. It was chosen as the primary worked example because it is the
 cleanest case: single root cause, clear error signature pair, and action items
 that generalize to any event-driven agent system.
 
-> **Source**: [OXY-412](mention://issue/05abf3c1-4781-41fc-b1c8-f9d6ead1d894) —
+> **Source**: Case: Duplicate Routing Request Burst (originally traced from production issue #412) —
 > Dispatcher agent sent 7 identical routing requests in 50 seconds.
 
 ### Trigger
@@ -662,7 +662,7 @@ appear within 50 seconds. [→ When to Use: Signal Detection Triggers]
 ### Q1: Facts *(pure timeline, no causal words)* [→ Question 1]
 
 ```
-10:28:14 — Dispatcher sends routing request #1 for OXY-xxx
+10:28:14 — Dispatcher sends routing request #1 for [a task]
 10:28:18 — Dispatcher sends routing request #2 (4s later, identical content)
 10:28:24 — Dispatcher: "test" (unusual — agent generating exploratory output)
 10:28:30 — Dispatcher sends routing request #3
@@ -940,7 +940,7 @@ This skill is based on:
 - **CLAUDE.md 压缩版** (lines 48–67): The compressed five-question protocol from
   the agent instructions. This is the primary and only available source for the
   five-question framework.
-- **6 production cases**: OXY-412, OXY-414, OXY-571, OXY-574, OXY-177, OXY-627
+- **6 production cases**: Case: Duplicate Routing Request Burst (traced from #412), Case: Cross-Agent File Delivery Failure (#414), Case: High-Frequency Correction Spiral (#571), Case: Blocked-Issue Timeout Cluster (#574), Case: Quality Standard Relativization (#177), Case: Template-Bound Rule Gap (#627)
   — real RCA analyses executed in a multi-agent system. Each case has been
   cross-validated against the original issue threads.
 
@@ -973,6 +973,6 @@ This skill is based on:
 ## References
 
 - `references/rca-examples.md` — Annotated transcripts of three production RCA
-  analyses (OXY-412, OXY-571, OXY-177) with two additional case summaries
-  (OXY-414, OXY-574). Each example shows the full five-question output and
+  analyses (Case: Duplicate Routing Request Burst, Case: High-Frequency Correction Spiral, Case: Quality Standard Relativization) with two additional case summaries
+  (Case: Cross-Agent File Delivery Failure, Case: Blocked-Issue Timeout Cluster). Each example shows the full five-question output and
   identifies what a shallower approach would have missed.

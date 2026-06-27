@@ -1,5 +1,7 @@
 # deep-trace
 
+[中文版](README.zh-CN.md)
+
 **AI Agent Root Cause Analysis Protocol — Five-Question Drill Adapted from Toyota's 5 Whys**
 
 When an AI agent makes a mistake, the instinct is to fix the symptom — add a one-line rule, tell it "don't do that." These patches accumulate, inflate instructions, and the same class of error recurs under different names.
@@ -153,7 +155,7 @@ deep-trace/
 │   ├── Self-Reflection Protocol
 │   ├── Correction Response Protocol (4-step)
 │   ├── Common Mistakes & Anti-Patterns (5 patterns)
-│   ├── Worked Example (OXY-412: full five-question walkthrough)
+│   ├── Worked Example (Case: Duplicate Routing Request Burst — full five-question walkthrough)
 │   ├── Integration Guide (minimal + full embed templates)
 │   └── Version & Provenance
 └── references/
@@ -166,9 +168,9 @@ deep-trace/
 
 Developed and battle-tested over 60+ agent collaboration scenarios in a multi-agent system. Key results:
 
-- **Eliminated duplicate routing bursts** (OXY-412): 7 identical requests in 50s → 0 recurrences after deploy
-- **Ended high-frequency correction cascades** (OXY-571): 4 corrections in 40 min → 0 S7b recurrence
-- **Extracted reusable design principle** (OXY-177): Template-bound rules don't generalize — prevented an entire class of future errors
+- **Eliminated duplicate routing bursts** (Case: Duplicate Routing Request Burst): 7 identical requests in 50s → 0 recurrences after deploy
+- **Ended high-frequency correction cascades** (Case: High-Frequency Correction Spiral): 4 corrections in 40 min → 0 S7b recurrence
+- **Extracted reusable design principle** (Case: Quality Standard Relativization): Template-bound rules don't generalize — prevented an entire class of future errors
 - **Reduced instruction patch inflation**: Rules added via RCA are principles, not one-off symptom bans
 
 ---

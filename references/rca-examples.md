@@ -11,19 +11,19 @@ available) based on the following criteria:
 
 | Case | Selection Rationale |
 |------|-------------------|
-| [OXY-412](#example-1-repeated-routing-requests-oxy-412) (Repeated Routing) | **Cleanest teaching case**: single root cause, clear error signature pair (`I-RED`/`P-REP`), action items generalize to any event-driven agent system. Ideal first example for new readers. |
-| [OXY-571](#example-2-high-frequency-corrections-self-reflection-oxy-571) (Self-Reflection) | **Demonstrates recursive application**: the investigator ran the protocol on itself. This case produced the Correction Response Protocol and proves the methodology's credibility through equal application. |
-| [OXY-177](#example-3-template-bound-rules-oxy-177) (Template-Bound Rules) | **Demonstrates meta-principle generation**: the RCA directly produced a reusable design principle ("template-embedded rules don't generalize") that now lives in the skill itself as Principle B. |
+| [Case: Duplicate Routing Request Burst](#example-1-duplicate-routing-request-burst) (Repeated Routing) | **Cleanest teaching case**: single root cause, clear error signature pair (`I-RED`/`P-REP`), action items generalize to any event-driven agent system. Ideal first example for new readers. |
+| [Case: High-Frequency Correction Spiral](#example-2-high-frequency-correction-spiral) (Self-Reflection) | **Demonstrates recursive application**: the investigator ran the protocol on itself. This case produced the Correction Response Protocol and proves the methodology's credibility through equal application. |
+| [Case: Quality Standard Relativization](#example-3-template-bound-rules) (Template-Bound Rules) | **Demonstrates meta-principle generation**: the RCA directly produced a reusable design principle ("template-embedded rules don't generalize") that now lives in the skill itself as Principle B. |
 
 Two additional cases are summarized in the [Appendix](#appendix-additional-case-summaries):
-- OXY-414 (File Delivery Unreachable) — demonstrates the `D-INC` pattern
-- OXY-574 (Blocked Issues Timeout) — demonstrates multi-pattern RCA and "alert ≠ action"
+- Case: Cross-Agent File Delivery Failure (File Delivery Unreachable) — demonstrates the `D-INC` pattern
+- Case: Blocked-Issue Timeout Cluster (Blocked Issues Timeout) — demonstrates multi-pattern RCA and "alert ≠ action"
 
 ---
 
-## Example 1: Repeated Routing Requests (OXY-412)
+## Example 1: Duplicate Routing Request Burst
 
-> **Source**: [OXY-412](mention://issue/05abf3c1-4781-41fc-b1c8-f9d6ead1d894)
+> **Source**: Case: Duplicate Routing Request Burst (originally traced from production issue #412)
 > **Trigger**: S3 (Circular mentions) + S6 (Timing anomaly)
 > **SKILL.md ref**: This is the primary worked example in SKILL.md
 
@@ -103,9 +103,9 @@ bursts in subsequent review cycles.
 
 ---
 
-## Example 2: High-Frequency Corrections / Self-Reflection (OXY-571)
+## Example 2: High-Frequency Correction Spiral / Self-Reflection
 
-> **Source**: [OXY-571](mention://issue/e8ec4a5f-2c2e-4cdc-bd83-078e1abd9576)
+> **Source**: Case: High-Frequency Correction Spiral (originally traced from production issue #571)
 > **Trigger**: S7b (≥ 3 corrections on same topic within 24h) + self-reflection
 > **SKILL.md ref**: Self-Reflection Protocol, Correction Response Protocol
 
@@ -119,8 +119,8 @@ The inspector ran the protocol on itself — demonstrating recursive self-applic
 17:18 — User correction #2: "too long-winded", 4 new requirements
 17:19 — Inspector compresses but still uses internal jargon, hard numbers
 17:44 — User correction #3: "don't use numbers, don't use jargon"
-17:45 — Inspector adjusts, but writes "scanned OXY-526 output"
-17:48 — User correction #4: "wrong! Not OXY-526 — scan the ENTIRE workspace"
+17:45 — Inspector adjusts, but writes "scanned [a single issue] output"
+17:48 — User correction #4: "wrong! Not [a single issue] — scan the ENTIRE workspace"
 17:50 — Inspector finally does full scan, gets it right
 ```
 
@@ -139,7 +139,7 @@ request" — causing scope to drift until even the scan target was wrong.
 ### Q4: Why Not Detected [→ SKILL.md: Question 4]
 - Between corrections #1-#2: no self-check of "is this what user wanted?"
 - Between #3-#4: the most critical break — reply explicitly said "scanned
-  OXY-526" but never asked "user said full workspace — is OXY-526 the right
+  [a single issue]" but never asked "user said full workspace — is [a single issue] the right
   scope?"
 - The self-check that would have caught this: "What did the user originally
   ask for, and does my current scope match?"
@@ -190,9 +190,9 @@ agents, not just the inspector). No S7b recurrence from inspector since deployme
 
 ---
 
-## Example 3: Template-Bound Rules (OXY-177)
+## Example 3: Template-Bound Rules
 
-> **Source**: [OXY-177](mention://issue/found)
+> **Source**: Case: Quality Standard Relativization (originally traced from production issue #177)
 > **Trigger**: User correction — missing issue mention link format
 > **SKILL.md ref**: Rule Design Meta-Principles (Principle B), Question 5
 
@@ -202,9 +202,9 @@ how template-embedded rules fail to generalize.
 
 ### Q1: Facts [→ SKILL.md: Question 1]
 ```
-12:52:44 — Manager creates child issue OXY-628. References it as **OXY-628**
+12:52:44 — Manager creates child issue [a task]. References it as **[a task]**
            (bold text, no mention link).
-           Required format: [OXY-628](mention://issue/<id>)
+           Required format: [linked text](mention://issue/<id>)
 12:55:56 — User: "I have a global rule that child issue references must
            include jump links. Why did the manager only give text?"
 ```
@@ -276,9 +276,9 @@ of the Rule Design Meta-Principles section.
 The following cases are included as condensed summaries to demonstrate
 additional error patterns without full five-question transcripts.
 
-### Case A: File Delivery Unreachable (OXY-414)
+### Case A: Cross-Agent File Delivery Failure
 
-> **Source**: [OXY-414](mention://issue/found)
+> **Source**: Case: Cross-Agent File Delivery Failure (originally traced from production issue #414)
 > **Trigger**: S8 (Closure break) — agent claimed delivery, consumer found nothing
 > **error_signature**: `D-INC` (primary)
 
@@ -306,9 +306,9 @@ platform-specific.
 
 ---
 
-### Case B: Blocked Issues Timeout (OXY-574)
+### Case B: Blocked-Issue Timeout Cluster
 
-> **Source**: [OXY-574](mention://issue/found)
+> **Source**: Case: Blocked-Issue Timeout Cluster (originally traced from production issue #574)
 > **Trigger**: S5 (Blocked timeout) — 6 issues blocked 57–263 hours
 > **error_signature**: `P-RTE` + `E-SKP`
 
