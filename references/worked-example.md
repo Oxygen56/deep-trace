@@ -17,9 +17,9 @@ that generalize to any event-driven agent system.
 > Dispatcher agent sent 7 identical routing requests in 50 seconds.
 
 ### Trigger
-Signal **S3** (Circular mentions) + **S6** (Timing anomaly): Dispatcher and
-Router @mention each other repeatedly, and 7 nearly-identical routing requests
-appear within 50 seconds. [→ When to Use: Signal Detection Triggers]
+Signal **S3** (Unproductive Loop) + **S6** (Temporal Anomaly): Dispatcher and
+Router exchange messages repeatedly without progress, and 7 nearly-identical
+routing requests appear within 50 seconds. [→ When to Use: Signal Detection Triggers]
 
 ### Q1: Facts *(pure timeline, no causal words)* [→ Question 1]
 

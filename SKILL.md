@@ -24,17 +24,17 @@ Battle-tested over 60+ agent collaboration scenarios in production.
 
 Run the protocol when any of these signals appear:
 
-| Code | Signal | One-line definition |
+| Code | Signal | Observable Pattern |
 |------|--------|---------------------|
-| **S1** | Correction | User or downstream agent explicitly negates output |
-| **S2** | Repeated explanation | Same point explained ≥ 2 times on the same issue |
-| **S3** | Circular mentions | Two agents @mention each other ≥ 3 rounds without progress |
-| **S4** | Output rejected | Delivery explicitly rejected as unusable |
-| **S5** | Blocked timeout | Task blocked > 48h with no resolution |
-| **S6** | Timing anomaly | Unusual delay or burst pattern in agent activity |
-| **S7** | Repeated correction | ≥ 3 corrections from the same person on the same topic within 24h |
-| **S8** | Closure break | Closed-loop action chain is broken |
-| **S9** | Flow stagnation | Task stays in the same stage beyond expected duration |
+| **S1** | Explicit Rejection | User or downstream explicitly rejects the output — "wrong", "not what I asked", "redo" |
+| **S2** | Repeated Clarification | Same point requires ≥ 2 rounds of re-explanation to be understood |
+| **S3** | Unproductive Loop | Two or more entities exchange messages ≥ 3 rounds with no progress or new information |
+| **S4** | Output Unusable | Completed work explicitly rejected as unusable or pulled back from review |
+| **S5** | Extended Inactivity | Task shows zero observable activity for an unusually long period relative to its expected cycle |
+| **S6** | Temporal Anomaly | Unusual burst of identical actions in a short window, or unexpectedly long silence |
+| **S7** | Correction Cascade | ≥ 3 corrections from the same source on the same topic within a short window |
+| **S8** | Claim-Fact Gap | Agent claims delivery/completion but downstream cannot find or verify the claimed output |
+| **S9** | Cycle Exceedance | Same piece of work stays at the same observable state far beyond its normal duration |
 
 Also trigger on: user explicitly requests RCA ("why did this happen?"), or agent
 self-triggers on noticing a pattern in its own errors.

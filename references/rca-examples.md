@@ -24,7 +24,7 @@ Two additional cases are summarized in the [Appendix](#appendix-additional-case-
 ## Example 1: Duplicate Routing Request Burst
 
 > **Source**: Case: Duplicate Routing Request Burst (originally traced from production issue #412)
-> **Trigger**: S3 (Circular mentions) + S6 (Timing anomaly)
+> **Trigger**: S3 (Unproductive Loop) + S6 (Temporal Anomaly)
 > **SKILL.md ref**: This is the primary worked example in SKILL.md
 
 **Scenario**: Dispatcher agent sent 7 identical routing requests in 50 seconds,
@@ -74,7 +74,7 @@ processing unit]", "re-triggered" → "[re-invoked]".
 
 | Field | Value |
 |-------|-------|
-| **Reflection Trigger** | S3 (Circular mentions) + S6 (Timing anomaly) |
+| **Reflection Trigger** | S3 (Unproductive Loop) + S6 (Temporal Anomaly) |
 | **Classification** | 流程缺失 |
 | **error_signature** | `I-RED` (primary), `P-REP` (secondary) |
 | **Solution** | Add pre-routing dedup check + @mention guard rule |
@@ -279,7 +279,7 @@ additional error patterns without full five-question transcripts.
 ### Case A: Cross-Agent File Delivery Failure
 
 > **Source**: Case: Cross-Agent File Delivery Failure (originally traced from production issue #414)
-> **Trigger**: S8 (Closure break) — agent claimed delivery, consumer found nothing
+> **Trigger**: S8 (Claim-Fact Gap) — agent claimed delivery, consumer found nothing
 > **error_signature**: `D-INC` (primary)
 
 **TL;DR**: Content agent wrote files to agent runtime isolated filesystem, not
@@ -309,7 +309,7 @@ platform-specific.
 ### Case B: Blocked-Issue Timeout Cluster
 
 > **Source**: Case: Blocked-Issue Timeout Cluster (originally traced from production issue #574)
-> **Trigger**: S5 (Blocked timeout) — 6 issues blocked 57–263 hours
+> **Trigger**: S5 (Extended Inactivity) — 6 issues with no activity for 57–263 hours
 > **error_signature**: `P-RTE` + `E-SKP`
 
 **TL;DR**: 6 issues blocked for 57–263 hours, all waiting on human input.
