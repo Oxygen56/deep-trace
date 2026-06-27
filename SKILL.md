@@ -79,10 +79,5 @@ All detailed content lives in `references/`. Read the files relevant to your tas
 
 ## Version & Provenance
 
-Based on CLAUDE.md compressed five-question protocol (lines 48-67) and 6 production
-RCA cases. Platform-agnostic — works with any LLM-based agent system. Companion
-skills planned: `agent-pregating-check` (pre-output self-check), `agent-review-standards`
-(daily quality review), `patrol-signal-detection` (real-time S1-S9 monitoring).
-
-Known gaps: the original 3405-character complete five-question protocol has not
-been located on disk. If recovered, diff it against `references/five-questions.md`.
+Based on the five-question protocol from agent instructions and 6 production RCA
+cases. Platform-agnostic — works with any LLM-based agent system.
